@@ -1,7 +1,9 @@
 package com.example.apptp1ex1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,12 +21,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val listView=findViewById<ListView>(R.id.listView)
+        val btn=findViewById<Button>(R.id.button)
         var names= listOf("HTML","CSS","PHP","JS","java")
-                    //list view simple_list_item_1 simple
+//        ########################list view simple_list_item_1 simple###########################################################
 //       val Adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,names)
-                     // listView simple_list_item_single_choice avec single chocie
-//        val adp=ArrayAdapter(this,android.R.layout.simple_list_item_single_choice,names)
+
+//       //##############################listView simple_list_item_single_choice avec single chocie##################################
+//        listView.choiceMode = ListView.CHOICE_MODE_SINGLE
+//        val adp=ArrayAdapter(this,android.R.layout.select_dialog_singlechoice,names)
+
+        listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
         val adp=ArrayAdapter(this,android.R.layout.simple_list_item_multiple_choice,names)
         listView.adapter=adp
+        btn.setOnClickListener {
+            val intent=Intent(this,exercice2::class.java).also {
+                startActivity(it)
+            }
+        }
     }
 }
